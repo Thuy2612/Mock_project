@@ -11,8 +11,7 @@
 static void UART0_Tx_Char(uint8_t c_char);
 static void UART0_Calculated_baud(uint32_t baudRate);
 
-uint8_t* ptr_put = NULL;
-
+static CALL_BACK s_callBack = NULL;
 
 /*FUNCTION**********************************************************************
  *
@@ -70,8 +69,9 @@ static void UART0_Calculated_baud(uint32_t baudRate)
  *                 parity none, data bit =8, stop bit =1
  *
  *END**************************************************************************/
-void UART0_Init(uint32_t baudRate)
+void UART0_Init(uint32_t baudRate, CALL_BACK callBack )
 {
+    s_callBack = callBack;
     /* Clock to UART0 MCGFLLCLK 20,971,520hz */
     SIM->SOPT2 |= SIM_SOPT2_UART0SRC(1u);
     SIM->SOPT2 &= ~ SIM_SOPT2_PLLFLLSEL_MASK;
@@ -159,21 +159,9 @@ void UART0_Tx_Msg(uint8_t* msg)
  *END**************************************************************************/
 void UART0_IRQHandler(void)
 {
-    static uint8_t dataIndex = 0;
-//    if( QUEUE_checkFull() == QUEUE_NOT_FULL)
- //   {
-        ptr_put = QUEUE_getFreeElement();
-        ptr_put[dataIndex] = UART0->D;
-
-        if( ptr_put[dataIndex] == '\n')
-        {
-            dataIndex = 0;
-            QUEUE_Push();
-//            ptr_put = QUEUE_getFreeElement();
-        }
-        else dataIndex ++;
- //   }
-
+    uint8_t character;
+    character = UART0->D;
+    s_callBack(character);
 
 }
 

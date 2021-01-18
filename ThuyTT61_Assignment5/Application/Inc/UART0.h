@@ -9,7 +9,7 @@
 #define INCLUDES_UART0_H_
 
 #include "MKL46Z4.h"
-#include "Queue.h"
+#include "stdio.h"
 
 /* Define Macro for UART.h*/
 
@@ -17,10 +17,12 @@
 #define OSR_MIN         3u
 #define OSR_MAX         31u
 
+typedef void (*CALL_BACK)(uint8_t character);
 /* Prototype function */
 
-void UART0_Init(uint32_t baudRate);
+void UART0_Init(uint32_t baudRate, CALL_BACK callBack );
 void UART0_Tx_Msg(uint8_t* msg);
+
 
 
 #endif /* INCLUDES_UART0_H_ */

@@ -17,39 +17,41 @@
 
 void App_Check_and_Pop(void)
 {
-    UART0_Init(BAUD_RATE);
-    uint8_t* line_address; /* Save address of line data in queue */
-    uint8_t count_line = 0; /* count number line data in srec file */
-    uint8_t check_error = TRUE; /* condition to stop program*/
+    UART0_Init(BAUD_RATE, SREC_callBack);
 
-    UART0_Tx_Msg("Choose 'Send File' to read file\r\n");
+    SREC_Init();
+    parseStatus_t lineParse;
+    uint8_t* srecLine;
+    parseData_Struct_t outPutData;
 
-    while(check_error == TRUE)
+    UART0_Tx_Msg("Finish\r\n");
+
+    while(1)
     {
         if( QUEUE_checkEmpty() == QUEUE_NOT_EMPTY)
         {
-            line_address = QUEUE_Peek();
+            srecLine = QUEUE_Peek();
+            lineParse = SREC_lineParse(srecLine, &outPutData);
+            QUEUE_Pop();
 
-                if(line_address != NULL)
-                {
-                    count_line++;
-                    if( CheckSrec( line_address, count_line))
-                    {
-                        UART0_Tx_Msg(">>\r\n");
-                    }
-                    else
-                    {
-                        UART0_Tx_Msg("ERROE\r\n");
-                    }
-                }
-               QUEUE_Pop();
+            // switch(lineParse)
+            // {
+            //     case parseStatus_Start:
+            //         UART0_Tx_Msg("Finish\r\n");
+            //         break;
+            //     case done:
+            //         UART0_Tx_Msg("Done\r\n");
+            //         break;
+            //     case invalidChecksum:
+            //         UART0_Tx_Msg("Error\r\n");
+            //         break;
+            //     default:
+                    UART0_Tx_Msg(srecLine);
+                    // break;
+
+            }
         }
-
-
     }
-
-
-}
 
 /* **********************************************************************
  * EOF

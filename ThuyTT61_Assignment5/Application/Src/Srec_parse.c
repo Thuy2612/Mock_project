@@ -7,261 +7,124 @@
 
 #include "Srec_parse.h"
 
+uint8_t *ptr_put = NULL;
 
-static uint8_t HexConverter(uint8_t hexuint8_t);
-static uint32_t LengthStr(uint8_t* str);
-static uint8_t CheckS(uint8_t* str);
-static uint8_t CheckType(uint8_t *str);
-static uint8_t CheckChar(uint8_t *str);
-static uint8_t CheckByteCount(uint8_t *str);
-static uint8_t MatchChar(uint8_t num1,uint8_t num2);
-static uint8_t CheckSum(uint8_t* str);
-static uint8_t CheckNumberLine(uint8_t *str, uint32_t row);
-
-
-/*FUNCTION**********************************************************************
- *
- * Function Name : HexConverter
- * Description   : Convert characters from HEX to DEC
- *
- *END**************************************************************************/
-static uint8_t HexConverter(uint8_t hexChar)
+uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar);
+/*chuyen ki tu thanh so hexa*/
+uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar)
 {
-    uint8_t charVal;
-    if( ( hexChar >= '0' ) && ( hexChar <= '9' ) )
-    {
-        charVal = hexChar - '0';
-    }
-
-    if((hexChar>='A')&&(hexChar<='F'))
-    {
-        charVal=hexChar - 'A' + 10;
-    }
-
-    return charVal;
+  if((Hexchar>='A')&&(Hexchar<='F'))
+  Hexchar = Hexchar - 'A' +10;
+  else Hexchar =Hexchar-48;
+  return Hexchar;
 }
 
-/*FUNCTION**********************************************************************
- *
- * Function Name : LengthStr
- * Description   : Get length of string str
- *
- *END**************************************************************************/
-
-static uint32_t LengthStr( uint8_t* str )
+parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData)
 {
-    uint8_t i = 0;
-    uint8_t count = 0;
+    parseStatus_t status = parseStatus_Error;
+    uint8_t srecType = 0;
+    uint8_t byteCount = 0;
+    uint8_t checkSum = 0;
+    uint16_t dataOffset = 4u;
+    uint16_t dataIndex = 0;
+    uint8_t dataTpm = 0;
+    uint8_t numberAddressByte = 0;
+    uint32_t address = 0;
 
-    for( ;*(str+i) != '\n'; i++)
+    if ('S' == srecLine[0])
     {
-        count ++;
-    }
-    return (count - 1); /* Except '\n' in file */
-}
-
-/*FUNCTION**********************************************************************
- *
- * Function Name : CheckS
- * Description   : Checking record start
- *
- *END**************************************************************************/
-static uint8_t CheckS ( uint8_t* str )
-{
-    uint8_t check = FALSE;
-
-    if( *str == 'S' )
-    {
-        check = TRUE;
-    }
-
-    return check;
-}
-
-/*FUNCTION**********************************************************************
- *
- * Function Name : CheckType
- * Description   : Checking record type- single numeric digit '0' to '9'
- *
- *END**************************************************************************/
-static uint8_t CheckType( uint8_t *str )
-{
-    uint8_t check = FALSE;
-
-    if( ( *(str+1)  >= '0' ) && ( *(str+1)  <= '9' ) && ( *(str+1)  != '4' ))
-    {
-        check= TRUE;
-    }
-
-    return check;
-}
-
-/*FUNCTION**********************************************************************
- *
- * Function Name : CheckChar
- * Description   : Checking character of string is ascii
- *
- *END**************************************************************************/
-static uint8_t CheckChar(uint8_t *str)
-{
-    uint8_t check = FALSE;
-    uint8_t i;
-    uint8_t count = 0;
-    uint8_t charVal;
-
-    for( i= BYTE_COUNT_POS ; i < LengthStr(str) ; i++)
-    {
-        charVal = *(str+i);
-
-        if(( (charVal>=48) && (charVal<=57) ) || ( (charVal >= 65 ) && ( charVal <= 70 ) ))  /* Check charVal ={ 0..9, A..F}*/
+        /* Get srecord type */
+        srecType = SREC_ConvertChar2Hex(srecLine[1]);
+        /* Get byte count */
+        byteCount = (uint8_t)((SREC_ConvertChar2Hex(srecLine[2]) << 4) \
+                                        | (SREC_ConvertChar2Hex(srecLine[3])));
+        checkSum = byteCount;
+        /* Parst */
+        switch (srecType)
         {
-            count++;
+            case 0:
+                status = parseStatus_Start;
+                break;
+            case 1:
+            case 2:
+            case 3:
+                numberAddressByte = srecType + 1;
+                status = parseStatus_Inprogress;
+                break;
+            case 4:
+                status = invalidSrecType;
+                break;
+            case 5:
+            case 6:
+                status = optional;
+                break;
+            case 7:
+            case 8:
+            case 9:
+                numberAddressByte = 11 - srecType;
+                status = done;
+                break;
+            default:
+                status = invalidSrecType;
+                break;
+        }
+
+        /* Get address */
+        for (dataIndex = 0; dataIndex < numberAddressByte; dataIndex++)
+        {
+            dataTpm = SREC_ConvertChar2Hex(srecLine[dataOffset]) << 4 \
+                               | SREC_ConvertChar2Hex(srecLine[dataOffset + 1]);
+            address = (address << 8) | dataTpm;
+            dataOffset += 2;
+            checkSum += dataTpm;
+        }
+        outPutData->address = address;
+        outPutData->length = byteCount - numberAddressByte - 1;
+        /* Get data */
+        for (dataIndex = 0; dataIndex < outPutData->length; dataIndex++)
+        {
+            dataTpm = SREC_ConvertChar2Hex(srecLine[dataOffset]) << 4 \
+                               | SREC_ConvertChar2Hex(srecLine[dataOffset + 1]);
+            outPutData->data[dataIndex] = dataTpm;
+            dataOffset += 2;
+            checkSum += dataTpm;
+        }
+        /* Calculator checksum */
+        dataTpm = SREC_ConvertChar2Hex(srecLine[dataOffset]) << 4 \
+                               | SREC_ConvertChar2Hex(srecLine[dataOffset + 1]);
+        checkSum += dataTpm;
+
+        if (0xFF != checkSum)
+        {
+            status = invalidChecksum;
         }
     }
 
-    if( CheckS(str) && CheckType(str) && ( count == LengthStr(str) - 2) )
-    {
-        check = TRUE;
-    }
-    return check;
+    return status;
 }
-
-/*FUNCTION**********************************************************************
- *
- * Function Name : MatchChar
- * Description   : Match two characters and convert to DEC
- *
- *END**************************************************************************/
-
-static uint8_t MatchChar (uint8_t num1 , uint8_t num2)
+void SREC_Init(void)
 {
-    return( ( HexConverter(num1) << 4 ) | ( HexConverter(num2) ) );
+    QUEUE_Init();
+    ptr_put = QUEUE_getFreeElement();
 }
 
-/*FUNCTION**********************************************************************
- *
- * Function Name : CheckByteCount
- * Description   : Checking byte count = address + data + checksum
- *
- *END**************************************************************************/
-
-static uint8_t CheckByteCount(uint8_t *str)
+void SREC_callBack(uint8_t character)
 {
-    uint8_t quantity;
-    uint8_t count=0;
-    uint8_t i;
-    uint8_t check = FALSE;
+    static uint8_t dataIndex = 0;
 
-    quantity = MatchChar( *(str+2) , *(str+3) );
+    ptr_put[dataIndex] = character;
 
-    for( i= BYTE_COUNT_POS;  i < LengthStr(str) ; i++ )
+    if( ptr_put[dataIndex] == '\n')
     {
-        count++;
+        dataIndex = 0;
+        QUEUE_Push();
+        ptr_put = QUEUE_getFreeElement();
     }
-    if( (quantity * 2)== (count-2) )
+    else
     {
-        check = TRUE;
+        dataIndex ++;
     }
-
-    return check;
 }
-
-
-/*FUNCTION**********************************************************************
- *
- * Function Name : CheckSum
- * Description   : checking checksum of record structure
- *
- *END**************************************************************************/
-
-static uint8_t CheckSum(uint8_t* str)
-{
-    uint32_t check = FALSE;
-    uint8_t i;
-    uint8_t sum = 0;
-    uint8_t lengthStr;
-    lengthStr = LengthStr(str);
-
-    for( i = BYTE_COUNT_POS ; i < lengthStr ; i += 2 )
-    {
-        sum += MatchChar( *(str+i) , *(str+i+1) );
-    }
-
-    if( (sum & 0xFF) == 0xFF)
-    {
-        check = TRUE;
-    }
-
-    return check;
-}
-
-
-/*FUNCTION**********************************************************************
- *
- * Function Name : CheckNumberLine
- * Description   : checking number line data with address in S5
- *
- *END**************************************************************************/
-
-
-static uint8_t CheckNumberLine ( uint8_t *str , uint32_t row )
-{
-    uint8_t check = FALSE;
-    uint8_t lengData;
-    uint8_t data_index;
-    uint8_t data[NUMBER_ELEMENT_MAX];
-    uint8_t numData = 0;
-
-    memset(data,0,NUMBER_ELEMENT_MAX); /* fill a block of memory with 0 */
-
-    for(data_index = ADDRESS_POS ;data_index < LengthStr(str)-2 ; data_index++) /* Get data in S5*/
-    {
-        *(data + data_index - ADDRESS_POS) = *(str+data_index);
-    }
-
-    for( data_index = 0; *(data+data_index) != '\0'; data_index ++)
-    {
-        lengData ++;
-    }
-
-    for( data_index = 0 ; data_index <lengData ; data_index ++ ) /* Convert data in S5 to DEC */
-    {
-        numData |= HexConverter( *(data + data_index) ) << ( (lengData - data_index - 1) *4 );
-    }
-
-    if( numData == (row-2) )
-    {
-        check = TRUE;
-    }
-
-    return check;
-}
-
-/*FUNCTION**********************************************************************
- *
- * Function Name : CheckSrec
- * Description   : Checking file SREC error or error
- *
- *END**************************************************************************/
-uint8_t CheckSrec( uint8_t *str , uint32_t row)
-{
-    uint8_t check = FALSE;
-
-    if( CheckS(str) && CheckType(str) && CheckChar(str) && CheckByteCount(str) && CheckSum(str) )
-    {
-        check= TRUE;
-    }
-
-    if((*(str+1)=='5')||(*(str+1)=='6'))
-    {
-        if(!CheckNumberLine(str,row))
-        {
-            check = FALSE;
-        }
-    }
-    return check;
-}
-
 /* **********************************************************************
  * EOF
  ***********************************************************************/

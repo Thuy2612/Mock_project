@@ -9,20 +9,35 @@
 #define INCLUDES_SREC_PARSE_H_
 
 
-#include <stdio.h>
+#include <stdbool.h>
 #include <stdint.h>
-#include <string.h>
+#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "Queue.h"
+typedef struct
+{
+    uint8_t data[256];
+    uint16_t length;
+    uint32_t address;
+}parseData_Struct_t;
 
-/* Define Macro for Srec_parse.h*/
-#define TRUE                        1u
-#define FALSE                       0u
-#define BYTE_COUNT_POS              2u
-#define ADDRESS_POS                 4u
-#define NUMBER_ELEMENT_MAX          80u
+typedef enum parstStatus_t
+{
+    parseStatus_Start,
+    parseStatus_Inprogress,
+    invalidSrecType,
+    optional,
+    done,
+    invalidChecksum,
+    parseStatus_Error
+}parseStatus_t;
 
-/* Prototype function */
+void SREC_Init(void);
+parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData);
 
-uint8_t CheckSrec( uint8_t *str , uint32_t row);
+void SREC_callBack(uint8_t character);
+
 #endif /* INCLUDES_SREC_PARSE_H_ */
 
 /* **********************************************************************

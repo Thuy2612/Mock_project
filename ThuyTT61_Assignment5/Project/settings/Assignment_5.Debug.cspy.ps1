@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.general.xcl" --backend -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.general.xcl" --backend -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.driver.xcl" 
 }

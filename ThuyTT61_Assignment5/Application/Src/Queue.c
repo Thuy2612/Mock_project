@@ -8,9 +8,15 @@
 #include "Queue.h"
 
 static uint8_t queue[NUMBER_LINE_IN_QUEUE_MAX][NUMBER_CHAR_IN_LINE_MAX];
-static uint8_t line_pushIndex = START_INDEX_LINE_IN_QUEUE;
-static uint8_t line_popIndex = START_INDEX_LINE_IN_QUEUE;
+static uint8_t line_pushIndex;
+static uint8_t line_popIndex;
 
+void QUEUE_Init(void)
+{
+    line_pushIndex = START_INDEX_LINE_IN_QUEUE;
+    line_popIndex = START_INDEX_LINE_IN_QUEUE;
+
+}
 uint8_t QUEUE_checkEmpty(void)
 {
     uint8_t checkEmpty = QUEUE_NOT_EMPTY;

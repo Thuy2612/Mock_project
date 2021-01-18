@@ -21,6 +21,7 @@
 #define QUEUE_NOT_FULL                      0u
 
 /* Prototype function */
+void QUEUE_Init(void);
 uint8_t QUEUE_checkEmpty(void);
 uint8_t QUEUE_checkFull(void);
 void QUEUE_Push(void);
