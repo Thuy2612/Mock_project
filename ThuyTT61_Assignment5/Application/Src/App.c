@@ -31,28 +31,29 @@ void App_Check_and_Pop(void)
         if( QUEUE_checkEmpty() == QUEUE_NOT_EMPTY)
         {
             srecLine = QUEUE_Peek();
+            
             lineParse = SREC_lineParse(srecLine, &outPutData);
             QUEUE_Pop();
 
-            // switch(lineParse)
-            // {
-            //     case parseStatus_Start:
-            //         UART0_Tx_Msg("Finish\r\n");
-            //         break;
-            //     case done:
-            //         UART0_Tx_Msg("Done\r\n");
-            //         break;
-            //     case invalidChecksum:
-            //         UART0_Tx_Msg("Error\r\n");
-            //         break;
-            //     default:
+            switch(lineParse)
+            {
+                case parseStatus_Start:
+                    UART0_Tx_Msg("Finish\r\n");
+                    break;
+                case done:
+                    UART0_Tx_Msg("Done\r\n");
+                    break;
+                case invalidChecksum:
+                    UART0_Tx_Msg("Error\r\n");
+                    break;
+                default:
                     UART0_Tx_Msg(srecLine);
-                    // break;
+                    break;
 
             }
         }
     }
-
+}
 /* **********************************************************************
  * EOF
  ***********************************************************************/

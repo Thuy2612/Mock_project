@@ -11,6 +11,7 @@ static uint8_t queue[NUMBER_LINE_IN_QUEUE_MAX][NUMBER_CHAR_IN_LINE_MAX];
 static uint8_t line_pushIndex;
 static uint8_t line_popIndex;
 
+
 void QUEUE_Init(void)
 {
     line_pushIndex = START_INDEX_LINE_IN_QUEUE;
@@ -42,7 +43,7 @@ uint8_t* QUEUE_Peek(void)
 {
     uint8_t* ptr_peekAddress = NULL;
 
-        ptr_peekAddress = queue[line_pushIndex];
+        ptr_peekAddress = queue[line_popIndex];
 
     return ( ptr_peekAddress );
 }
@@ -50,7 +51,7 @@ uint8_t* QUEUE_Peek(void)
 uint8_t* QUEUE_getFreeElement(void)
 {
     uint8_t* ptr_freeSpace = NULL;
-        ptr_freeSpace = queue[line_popIndex];
+        ptr_freeSpace = queue[line_pushIndex];
 
     return ptr_freeSpace;
 }

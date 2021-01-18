@@ -92043,7 +92043,7 @@
     "display": "void QUEUE_Init(void)",
     "location": {
       "column": "6",
-      "line": "14",
+      "line": "15",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "QUEUE_Init",
@@ -92057,7 +92057,7 @@
     "display": "uint8_t QUEUE_checkEmpty(void)",
     "location": {
       "column": "9",
-      "line": "20",
+      "line": "21",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "QUEUE_checkEmpty",
@@ -92065,13 +92065,13 @@
     "scope": null
   },
   {
-    "ID": "c:Queue.c@411@F@QUEUE_checkEmpty@checkEmpty",
+    "ID": "c:Queue.c@413@F@QUEUE_checkEmpty@checkEmpty",
     "What": "Variable",
     "defdec": "Def",
     "display": "checkEmpty",
     "location": {
       "column": "13",
-      "line": "22",
+      "line": "23",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "checkEmpty",
@@ -92085,7 +92085,7 @@
     "display": "uint8_t QUEUE_checkFull(void)",
     "location": {
       "column": "9",
-      "line": "30",
+      "line": "31",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "QUEUE_checkFull",
@@ -92093,13 +92093,13 @@
     "scope": null
   },
   {
-    "ID": "c:Queue.c@607@F@QUEUE_checkFull@checkFull",
+    "ID": "c:Queue.c@609@F@QUEUE_checkFull@checkFull",
     "What": "Variable",
     "defdec": "Def",
     "display": "checkFull",
     "location": {
       "column": "13",
-      "line": "32",
+      "line": "33",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "checkFull",
@@ -92113,7 +92113,7 @@
     "display": "uint8_t * QUEUE_Peek(void)",
     "location": {
       "column": "10",
-      "line": "41",
+      "line": "42",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "QUEUE_Peek",
@@ -92121,13 +92121,13 @@
     "scope": null
   },
   {
-    "ID": "c:Queue.c@857@F@QUEUE_Peek@ptr_peekAddress",
+    "ID": "c:Queue.c@859@F@QUEUE_Peek@ptr_peekAddress",
     "What": "Variable",
     "defdec": "Def",
     "display": "ptr_peekAddress",
     "location": {
       "column": "14",
-      "line": "43",
+      "line": "44",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "ptr_peekAddress",
@@ -92141,7 +92141,7 @@
     "display": "uint8_t * QUEUE_getFreeElement(void)",
     "location": {
       "column": "10",
-      "line": "50",
+      "line": "51",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "QUEUE_getFreeElement",
@@ -92149,13 +92149,13 @@
     "scope": null
   },
   {
-    "ID": "c:Queue.c@1027@F@QUEUE_getFreeElement@ptr_freeSpace",
+    "ID": "c:Queue.c@1028@F@QUEUE_getFreeElement@ptr_freeSpace",
     "What": "Variable",
     "defdec": "Def",
     "display": "ptr_freeSpace",
     "location": {
       "column": "14",
-      "line": "52",
+      "line": "53",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "ptr_freeSpace",
@@ -92169,7 +92169,7 @@
     "display": "void QUEUE_Push(void)",
     "location": {
       "column": "6",
-      "line": "58",
+      "line": "59",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "QUEUE_Push",
@@ -92183,7 +92183,7 @@
     "display": "void QUEUE_Pop(void)",
     "location": {
       "column": "6",
-      "line": "64",
+      "line": "65",
       "path": "C:\\Users\\Admin\\Desktop\\Mock\\ThuyTT61_Assignment5\\Mock_project\\ThuyTT61_Assignment5\\Application\\Src\\Queue.c"
     },
     "name": "QUEUE_Pop",
