@@ -1,0 +1,284 @@
+###############################################################################
+#
+# IAR ELF Linker V8.50.9.278/W32 for ARM                  18/Jan/2021  17:16:17
+# Copyright 2007-2020 IAR Systems AB.
+#
+#    Output file  =
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Exe\Assignment_5.out
+#    Map file     =
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\List\Assignment_5.map
+#    Command line =
+#        -f C:\Users\Admin\AppData\Local\Temp\EW6128.tmp
+#        (C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj\App.o
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj\main.o
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj\Queue.o
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj\Srec_parse.o
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj\startup_MKL46Z4.o
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj\system_MKL46Z4.o
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj\UART0.o
+#        --no_out_extension -o
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Exe\Assignment_5.out
+#        --map
+#        C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\List\Assignment_5.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        8.4\arm\config\linker\NXP\MKL46Z256xxx4.icf" --semihosting --entry
+#        __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because no calls to memory allocation
+functions were found in the application outside of system library
+functions, and there are calls to deallocation functions in the
+application.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x0 { ro section .intvec };
+"P1":  place in [from 0x0 to 0x3ff] |
+                [from 0x410 to 0x3'ffff] { ro };
+define block CSTACK with size = 2K, alignment = 8 { };
+define block HEAP with size = 4K, alignment = 8 { };
+"P3":  place in [from 0x1fff'e000 to 0x1fff'ffff] |
+                [from 0x2000'0000 to 0x2000'5fff] {
+          rw, block CSTACK, block HEAP };
+"P5":  place in [from 0x400 to 0x40f] { section FlashConfig };
+
+No sections matched the following patterns:
+
+  ro section application_specific_ro  in "P2|P4"
+  rw section application_specific_rw  in "P2|P4"
+
+
+  Section          Kind         Address   Size  Object
+  -------          ----         -------   ----  ------
+"A0":                                     0xc0
+  .intvec          ro code          0x0   0xc0  startup_MKL46Z4.o [1]
+                                 - 0xc0   0xc0
+
+"P1", part 1 of 2:                       0x230
+  .text            ro code         0xc0   0x4e  ABImemset.o [3]
+  .text            ro code        0x10e    0x2  startup_MKL46Z4.o [1]
+  .text            ro code        0x110  0x1e0  UART0.o [1]
+                                - 0x2f0  0x230
+
+"P5":                                     0x10
+  FlashConfig      ro code        0x400   0x10  startup_MKL46Z4.o [1]
+                                - 0x410   0x10
+
+"P1", part 2 of 2:                       0x586
+  .text            ro code        0x410  0x264  Srec_parse.o [1]
+  .text            ro code        0x674   0xae  I32DivModFast.o [3]
+  .text            ro code        0x722    0x2  startup_MKL46Z4.o [1]
+  .text            ro code        0x724   0x68  Queue.o [1]
+  .text            ro code        0x78c    0x2  IntDivZer.o [3]
+  .text            ro code        0x78e    0x2  startup_MKL46Z4.o [1]
+  .text            ro code        0x790   0x5c  App.o [1]
+  .text            ro code        0x7ec   0x3c  zero_init3.o [3]
+  .text            ro code        0x828   0x28  data_init.o [3]
+  .rodata          const          0x850   0x24  App.o [1]
+  .text            ro code        0x874   0x24  startup_MKL46Z4.o [1]
+  .iar.init_table  const          0x898   0x10  - Linker created -
+  .text            ro code        0x8a8   0x1e  cmain.o [3]
+  .text            ro code        0x8c6    0x4  low_level_init.o [2]
+  .text            ro code        0x8ca    0xa  main.o [1]
+  .text            ro code        0x8d4    0x8  exit.o [2]
+  .text            ro code        0x8dc    0xa  cexit.o [3]
+  .text            ro code        0x8e6    0x2  startup_MKL46Z4.o [1]
+  .text            ro code        0x8e8   0x14  exit.o [4]
+  .text            ro code        0x8fc   0x1c  cstartup_M.o [3]
+  .text            ro code        0x918    0xc  system_MKL46Z4.o [1]
+  .rodata          const          0x924    0x8  App.o [1]
+  .rodata          const          0x92c    0x8  App.o [1]
+  .text            ro code        0x934    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x93c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x944    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x94c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x954    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x95c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x964    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x96c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x974    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x97c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x984    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x98c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0x994    0x2  startup_MKL46Z4.o [1]
+  .rodata          const          0x996    0x0  zero_init3.o [3]
+                                - 0x996  0x586
+
+"P3", part 1 of 2:                       0x148
+  .bss             zero     0x1fff'e000  0x140  Queue.o [1]
+  .bss             zero     0x1fff'e140    0x4  UART0.o [1]
+  .bss             zero     0x1fff'e144    0x1  Queue.o [1]
+  .bss             zero     0x1fff'e145    0x1  Queue.o [1]
+  .bss             zero     0x1fff'e146    0x1  UART0.o [1]
+                          - 0x1fff'e147  0x147
+
+"P3", part 2 of 2:                       0x800
+  CSTACK                    0x1fff'e148  0x800  <Block>
+    CSTACK         uninit   0x1fff'e148  0x800  <Block tail>
+                          - 0x1fff'e948  0x800
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+        0x2f0        0x3ff     0x110
+        0x996     0x3'ffff  0x3'f66a
+  0x1fff'e948  0x1fff'ffff    0x16b8
+  0x2000'0000  0x2000'5fff    0x6000
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x147:
+          0x1fff'e000  0x147
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module             ro code  ro data  rw data
+    ------             -------  -------  -------
+command line/config:
+    --------------------------------------------
+    Total:
+
+C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj: [1]
+    App.o                   92       52
+    Queue.o                104               322
+    Srec_parse.o           612
+    UART0.o                480                 5
+    main.o                  10
+    startup_MKL46Z4.o      350
+    system_MKL46Z4.o        12
+    --------------------------------------------
+    Total:               1'660       52      327
+
+dl6M_tln.a: [2]
+    exit.o                   8
+    low_level_init.o         4
+    --------------------------------------------
+    Total:                  12
+
+rt6M_tl.a: [3]
+    ABImemset.o             78
+    I32DivModFast.o        174
+    IntDivZer.o              2
+    cexit.o                 10
+    cmain.o                 30
+    cstartup_M.o            28
+    data_init.o             40
+    zero_init3.o            60
+    --------------------------------------------
+    Total:                 422
+
+shb_l.a: [4]
+    exit.o                  20
+    --------------------------------------------
+    Total:                  20
+
+    Linker created                   16    2'048
+------------------------------------------------
+    Grand Total:         2'114       68    2'375
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base         0x898          --   Gb  - Linker created -
+.iar.init_table$$Limit        0x8a8          --   Gb  - Linker created -
+?main                         0x8a9         Code  Gb  cmain.o [3]
+App_Check_and_Pop             0x791   0x5c  Code  Gb  App.o [1]
+CSTACK$$Base            0x1fff'e148          --   Gb  - Linker created -
+CSTACK$$Limit           0x1fff'e948          --   Gb  - Linker created -
+CheckByteCount                0x4f9   0x40  Code  Lc  Srec_parse.o [1]
+CheckChar                     0x47f   0x60  Code  Lc  Srec_parse.o [1]
+CheckNumberLine               0x57f   0x98  Code  Lc  Srec_parse.o [1]
+CheckS                        0x453   0x12  Code  Lc  Srec_parse.o [1]
+CheckSrec                     0x617   0x5e  Code  Gb  Srec_parse.o [1]
+CheckSum                      0x539   0x46  Code  Lc  Srec_parse.o [1]
+CheckType                     0x465   0x1a  Code  Lc  Srec_parse.o [1]
+HexConverter                  0x411   0x24  Code  Lc  Srec_parse.o [1]
+LengthStr                     0x435   0x1e  Code  Lc  Srec_parse.o [1]
+MatchChar                     0x4df   0x1a  Code  Lc  Srec_parse.o [1]
+NVIC_EnableIRQ                0x111    0xe  Code  Lc  UART0.o [1]
+QUEUE_Peek                    0x73b   0x10  Code  Gb  Queue.o [1]
+QUEUE_Pop                     0x76d   0x12  Code  Gb  Queue.o [1]
+QUEUE_Push                    0x75b   0x12  Code  Gb  Queue.o [1]
+QUEUE_checkEmpty              0x725   0x16  Code  Gb  Queue.o [1]
+QUEUE_getFreeElement          0x74b   0x10  Code  Gb  Queue.o [1]
+Region$$Table$$Base           0x898          --   Gb  - Linker created -
+Region$$Table$$Limit          0x8a8          --   Gb  - Linker created -
+SystemInit                    0x919    0x8  Code  Gb  system_MKL46Z4.o [1]
+UART0_Calculated_baud         0x11f   0x78  Code  Lc  UART0.o [1]
+UART0_IRQHandler              0x271   0x32  Code  Gb  UART0.o [1]
+UART0_IRQHandler::dataIndex
+                        0x1fff'e146    0x1  Data  Lc  UART0.o [1]
+UART0_Init                    0x197   0xb4  Code  Gb  UART0.o [1]
+UART0_Tx_Char                 0x24b   0x10  Code  Lc  UART0.o [1]
+UART0_Tx_Msg                  0x25b   0x16  Code  Gb  UART0.o [1]
+__Vectors                       0x0          --   Gb  startup_MKL46Z4.o [1]
+__Vectors_End                  0xc0         Data  Gb  startup_MKL46Z4.o [1]
+__Vectors_Size {Abs}           0xc0          --   Gb  startup_MKL46Z4.o [1]
+__aeabi_idiv0                 0x78d         Code  Gb  IntDivZer.o [3]
+__aeabi_memset                 0xc1         Code  Gb  ABImemset.o [3]
+__aeabi_uidiv                 0x675         Code  Gb  I32DivModFast.o [3]
+__aeabi_uidivmod              0x675         Code  Gb  I32DivModFast.o [3]
+__cmain                       0x8a9         Code  Gb  cmain.o [3]
+__exit                        0x8e9   0x14  Code  Gb  exit.o [4]
+__iar_Memset4_word             0xe1         Code  Gb  ABImemset.o [3]
+__iar_Memset_word              0xcd         Code  Gb  ABImemset.o [3]
+__iar_data_init3              0x829   0x28  Code  Gb  data_init.o [3]
+__iar_program_start           0x8fd         Code  Gb  cstartup_M.o [3]
+__iar_zero_init3              0x7ed   0x3c  Code  Gb  zero_init3.o [3]
+__low_level_init              0x8c7    0x4  Code  Gb  low_level_init.o [2]
+__vector_table                  0x0         Data  Gb  startup_MKL46Z4.o [1]
+__vector_table_0x1c            0x1c         Data  Gb  startup_MKL46Z4.o [1]
+_call_main                    0x8b5         Code  Gb  cmain.o [3]
+_exit                         0x8dd         Code  Gb  cexit.o [3]
+_main                         0x8bf         Code  Gb  cmain.o [3]
+exit                          0x8d5    0x8  Code  Gb  exit.o [2]
+line_popIndex           0x1fff'e145    0x1  Data  Lc  Queue.o [1]
+line_pushIndex          0x1fff'e144    0x1  Data  Lc  Queue.o [1]
+main                          0x8cb    0xa  Code  Gb  main.o [1]
+ptr_put                 0x1fff'e140    0x4  Data  Gb  UART0.o [1]
+queue                   0x1fff'e000  0x140  Data  Lc  Queue.o [1]
+
+
+[1] = C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\Debug\Obj
+[2] = dl6M_tln.a
+[3] = rt6M_tl.a
+[4] = shb_l.a
+
+  2'114 bytes of readonly  code memory
+     68 bytes of readonly  data memory
+  2'375 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

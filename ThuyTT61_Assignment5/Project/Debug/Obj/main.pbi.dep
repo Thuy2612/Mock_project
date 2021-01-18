@@ -1,0 +1,23 @@
+main.pbi: \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Application\main.c \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Application\Inc\App.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Application\Inc/Srec_parse.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\stdio.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\ycheck.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\yvals.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Defaults.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Config_Normal.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Product.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\ysizet.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\stdint.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\string.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\DLib_Product_string.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Application\Inc/UART0.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Board\Startup\MKL46Z\MKL46Z4.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Board\Startup\CMSIS\Include\core_cm0plus.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Board\Startup\CMSIS\Include/core_cmInstr.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\cmsis_iar.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c/iccarm_builtin.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Board\Startup\CMSIS\Include/core_cmFunc.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Board\Startup\MKL46Z/system_MKL46Z4.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\ThuyTT61_Assignment5\Project\..\Application\Inc/Queue.h
