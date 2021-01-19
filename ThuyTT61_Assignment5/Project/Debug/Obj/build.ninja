@@ -21,13 +21,15 @@ rule browsedata
 
 #Build steps
 build App.pbi : index App.xcl
+build Button.pbi : index Button.xcl
+build Flash.pbi : index Flash.xcl
 build Queue.pbi : index Queue.xcl
 build Srec_parse.pbi : index Srec_parse.xcl
 build UART0.pbi : index UART0.xcl
 build main.pbi : index main.xcl
 build system_MKL46Z4.pbi : index system_MKL46Z4.xcl
-build Assignment_5_part0.pbi : link App.pbi Queue.pbi
-build Assignment_5_part1.pbi : link Srec_parse.pbi UART0.pbi
+build Assignment_5_part0.pbi : link App.pbi Button.pbi Flash.pbi
+build Assignment_5_part1.pbi : link Queue.pbi Srec_parse.pbi UART0.pbi
 build Assignment_5_part2.pbi : link main.pbi system_MKL46Z4.pbi
 build Assignment_5.pbd : link Assignment_5_part0.pbi Assignment_5_part1.pbi Assignment_5_part2.pbi
 build Assignment_5.pbw : browsedata Assignment_5.pbd

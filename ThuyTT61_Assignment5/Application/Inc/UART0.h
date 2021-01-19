@@ -17,9 +17,10 @@
 #define OSR_MIN         3u
 #define OSR_MAX         31u
 
+/* Define CALL_BACK function pointer */
 typedef void (*CALL_BACK)(uint8_t character);
-/* Prototype function */
 
+/* Prototype function */
 void UART0_Init(uint32_t baudRate, CALL_BACK callBack );
 void UART0_Tx_Msg(uint8_t* msg);
 

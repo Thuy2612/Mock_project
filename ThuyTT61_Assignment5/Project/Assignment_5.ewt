@@ -2847,6 +2847,12 @@
                 <name>$PROJ_DIR$\..\Application\Inc\App.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Application\Inc\Button.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Inc\Flash.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Application\Inc\Queue.h</name>
             </file>
             <file>
@@ -2860,6 +2866,12 @@
             <name>Source</name>
             <file>
                 <name>$PROJ_DIR$\..\Application\Src\App.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Src\Button.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Application\Src\Flash.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Application\Src\Queue.c</name>

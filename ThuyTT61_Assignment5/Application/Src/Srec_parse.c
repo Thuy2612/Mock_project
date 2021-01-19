@@ -9,9 +9,16 @@
 
 uint8_t *ptr_put = NULL;
 
-uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar);
+static uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar);
+
+void SREC_Init(void)
+{
+    QUEUE_Init();
+    ptr_put = QUEUE_getFreeElement();
+}
+
 /*chuyen ki tu thanh so hexa*/
-uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar)
+static uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar)
 {
   if((Hexchar>='A')&&(Hexchar<='F'))
   Hexchar = Hexchar - 'A' +10;
@@ -52,20 +59,20 @@ parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData)
                 status = parseStatus_Inprogress;
                 break;
             case 4:
-                status = invalidSrecType;
+                status = parseStatus_InvalidSrecType;
                 break;
             case 5:
             case 6:
-                status = optional;
+                status = parseStatus_Optional;
                 break;
             case 7:
             case 8:
             case 9:
                 numberAddressByte = 11 - srecType;
-                status = done;
+                status = parseStatus_Done;
                 break;
             default:
-                status = invalidSrecType;
+                status = parseStatus_InvalidSrecType;
                 break;
         }
 
@@ -96,7 +103,7 @@ parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData)
 
         if (0xFF != checkSum)
         {
-            status = invalidChecksum;
+            status = parseStatus_InvalidChecksum;
         }
     }
 

@@ -154,8 +154,8 @@ void UART0_Tx_Msg(uint8_t* msg)
 /*FUNCTION**********************************************************************
  *
  * Function Name : UART0_IRQHandler
- * Description   : Not value return, UART0 interrupt function, if queue isn't full,
- *                 push data into queue
+ * Description   : Not value return, UART0 interrupt function, call back function to
+ *                  push data into queue
  *END**************************************************************************/
 void UART0_IRQHandler(void)
 {

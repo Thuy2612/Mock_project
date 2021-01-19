@@ -10,6 +10,7 @@
 
 #include "stdint.h"
 #include "stdio.h"
+
 /* Define Macro for Queue.h */
 #define NUMBER_LINE_IN_QUEUE_MAX            4u
 #define START_INDEX_LINE_IN_QUEUE           0u
@@ -31,6 +32,6 @@ uint8_t* QUEUE_getFreeElement(void);
 
 #endif /* INCLUDES_QUEUE_H_ */
 
-/***********************************************************************
+/* **********************************************************************
  * EOF
  ***********************************************************************/

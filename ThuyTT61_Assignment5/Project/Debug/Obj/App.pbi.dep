@@ -23,4 +23,6 @@ App.pbi: \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c\cmsis_iar.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.4\arm\inc\c/iccarm_builtin.h \
   C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\..\Board\Startup\CMSIS\Include/core_cmFunc.h \
-  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\..\Board\Startup\MKL46Z/system_MKL46Z4.h
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\..\Board\Startup\MKL46Z/system_MKL46Z4.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\..\Application\Inc/Flash.h \
+  C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\..\Application\Inc/Button.h
