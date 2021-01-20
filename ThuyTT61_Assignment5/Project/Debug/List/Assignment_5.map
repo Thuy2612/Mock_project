@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.50.9.278/W32 for ARM                  21/Jan/2021  01:18:31
+# IAR ELF Linker V8.50.9.278/W32 for ARM                  21/Jan/2021  01:26:13
 # Copyright 2007-2020 IAR Systems AB.
 #
 #    Output file  =
@@ -8,7 +8,7 @@
 #    Map file     =
 #        C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\List\Assignment_5.map
 #    Command line =
-#        -f C:\Users\Admin\AppData\Local\Temp\EW681A.tmp
+#        -f C:\Users\Admin\AppData\Local\Temp\EW760F.tmp
 #        (C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\Obj\App.o
 #        C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\Obj\Button.o
 #        C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\Obj\Flash.o
@@ -80,51 +80,51 @@ No sections matched the following patterns:
   FlashConfig      ro code        0x400   0x10  startup_MKL46Z4.o [1]
                                 - 0x410   0x10
 
-"P1", part 2 of 2:                       0x724
+"P1", part 2 of 2:                       0x760
   .text            ro code        0x410   0x88  Queue.o [1]
   .text            ro code        0x498  0x1bc  UART0.o [1]
   .text            ro code        0x654   0xae  I32DivModFast.o [3]
   .text            ro code        0x702    0x2  startup_MKL46Z4.o [1]
   .text            ro code        0x704    0x2  IntDivZer.o [3]
   .text            ro code        0x706    0x2  startup_MKL46Z4.o [1]
-  .text            ro code        0x708  0x114  App.o [1]
-  .text            ro code        0x81c   0xe0  Flash.o [1]
-  .text            ro code        0x8fc   0x4c  Button.o [1]
-  .text            ro code        0x948   0x3c  zero_init3.o [3]
-  .rodata          const          0x984   0x28  App.o [1]
-  .text            ro code        0x9ac   0x28  data_init.o [3]
-  .rodata          const          0x9d4   0x24  App.o [1]
-  .text            ro code        0x9f8   0x24  startup_MKL46Z4.o [1]
-  .iar.init_table  const          0xa1c   0x10  - Linker created -
-  .text            ro code        0xa2c   0x1e  cmain.o [3]
-  .text            ro code        0xa4a    0x4  low_level_init.o [2]
-  .text            ro code        0xa4e    0xa  main.o [1]
-  .text            ro code        0xa58    0x8  exit.o [2]
-  .text            ro code        0xa60    0xa  cexit.o [3]
-  .text            ro code        0xa6a    0x2  startup_MKL46Z4.o [1]
-  .text            ro code        0xa6c   0x14  exit.o [4]
-  .text            ro code        0xa80   0x1c  cstartup_M.o [3]
-  .rodata          const          0xa9c    0xc  App.o [1]
-  .rodata          const          0xaa8    0xc  App.o [1]
-  .text            ro code        0xab4    0xc  system_MKL46Z4.o [1]
-  .rodata          const          0xac0    0x8  App.o [1]
-  .rodata          const          0xac8    0x8  App.o [1]
-  .text            ro code        0xad0    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xad8    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xae0    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xae8    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xaf0    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xaf8    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xb00    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xb08    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xb10    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xb18    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xb20    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xb28    0x8  startup_MKL46Z4.o [1]
-  .text            ro code        0xb30    0x2  startup_MKL46Z4.o [1]
-  .text            ro code        0xb32    0x2  startup_MKL46Z4.o [1]
-  .rodata          const          0xb34    0x0  zero_init3.o [3]
-                                - 0xb34  0x724
+  .text            ro code        0x708  0x150  App.o [1]
+  .text            ro code        0x858   0xe0  Flash.o [1]
+  .text            ro code        0x938   0x4c  Button.o [1]
+  .text            ro code        0x984   0x3c  zero_init3.o [3]
+  .rodata          const          0x9c0   0x28  App.o [1]
+  .text            ro code        0x9e8   0x28  data_init.o [3]
+  .rodata          const          0xa10   0x24  App.o [1]
+  .text            ro code        0xa34   0x24  startup_MKL46Z4.o [1]
+  .iar.init_table  const          0xa58   0x10  - Linker created -
+  .text            ro code        0xa68   0x1e  cmain.o [3]
+  .text            ro code        0xa86    0x4  low_level_init.o [2]
+  .text            ro code        0xa8a    0xa  main.o [1]
+  .text            ro code        0xa94    0x8  exit.o [2]
+  .text            ro code        0xa9c    0xa  cexit.o [3]
+  .text            ro code        0xaa6    0x2  startup_MKL46Z4.o [1]
+  .text            ro code        0xaa8   0x14  exit.o [4]
+  .text            ro code        0xabc   0x1c  cstartup_M.o [3]
+  .rodata          const          0xad8    0xc  App.o [1]
+  .rodata          const          0xae4    0xc  App.o [1]
+  .text            ro code        0xaf0    0xc  system_MKL46Z4.o [1]
+  .rodata          const          0xafc    0x8  App.o [1]
+  .rodata          const          0xb04    0x8  App.o [1]
+  .text            ro code        0xb0c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb14    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb1c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb24    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb2c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb34    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb3c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb44    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb4c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb54    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb5c    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb64    0x8  startup_MKL46Z4.o [1]
+  .text            ro code        0xb6c    0x2  startup_MKL46Z4.o [1]
+  .text            ro code        0xb6e    0x2  startup_MKL46Z4.o [1]
+  .rodata          const          0xb70    0x0  zero_init3.o [3]
+                                - 0xb70  0x760
 
 "P3", part 1 of 2:                       0x824
   .bss             zero     0x1fff'e000  0x818  Queue.o [1]
@@ -146,7 +146,7 @@ Unused ranges:
          From           To      Size
          ----           --      ----
         0x284        0x3ff     0x17c
-        0xb34     0x3'ffff  0x3'f4cc
+        0xb70     0x3'ffff  0x3'f490
   0x1fff'e824  0x1fff'e827       0x4
   0x1fff'f028  0x1fff'ffff     0xfd8
   0x2000'0000  0x2000'5fff    0x6000
@@ -175,7 +175,7 @@ command line/config:
     Total:
 
 C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\Obj: [1]
-    App.o                  276      116
+    App.o                  336      116
     Button.o                76
     Flash.o                224
     Queue.o                136             2'075
@@ -185,7 +185,7 @@ C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\Obj
     startup_MKL46Z4.o      350
     system_MKL46Z4.o        12
     --------------------------------------------
-    Total:               1'980      116    2'084
+    Total:               2'040      116    2'084
 
 dl6M_tln.a: [2]
     exit.o                   8
@@ -211,7 +211,7 @@ shb_l.a: [4]
 
     Linker created                   16    2'048
 ------------------------------------------------
-    Grand Total:         2'356      132    4'132
+    Grand Total:         2'416      132    4'132
 
 
 *******************************************************************************
@@ -220,33 +220,35 @@ shb_l.a: [4]
 
 Entry                       Address   Size  Type      Object
 -----                       -------   ----  ----      ------
-.iar.init_table$$Base         0xa1c          --   Gb  - Linker created -
-.iar.init_table$$Limit        0xa2c          --   Gb  - Linker created -
-?main                         0xa2d         Code  Gb  cmain.o [3]
-APP_jumpToAPP                 0x7a3   0x1c  Code  Gb  App.o [1]
-APP_loadFirmware              0x709   0x9a  Code  Gb  App.o [1]
-App_Boot                      0x7bf   0x34  Code  Gb  App.o [1]
-BUTTON_Init                   0x8fd   0x4c  Code  Gb  Button.o [1]
+.iar.init_table$$Base         0xa58          --   Gb  - Linker created -
+.iar.init_table$$Limit        0xa68          --   Gb  - Linker created -
+?main                         0xa69         Code  Gb  cmain.o [3]
+APP_EraseFlash                0x721   0x12  Code  Gb  App.o [1]
+APP_checkInvalidApp           0x709   0x18  Code  Gb  App.o [1]
+APP_jumpToAPP                 0x7c3   0x1c  Code  Gb  App.o [1]
+APP_loadFirmware              0x733   0x90  Code  Gb  App.o [1]
+App_Boot                      0x7df   0x50  Code  Gb  App.o [1]
+BUTTON_Init                   0x939   0x4c  Code  Gb  Button.o [1]
 CSTACK$$Base            0x1fff'e828          --   Gb  - Linker created -
 CSTACK$$Limit           0x1fff'f028          --   Gb  - Linker created -
-Erase_Multi_Sector            0x8d1   0x2c  Code  Gb  Flash.o [1]
-Erase_Sector                  0x86f   0x3a  Code  Gb  Flash.o [1]
+Erase_Multi_Sector            0x90d   0x2c  Code  Gb  Flash.o [1]
+Erase_Sector                  0x8ab   0x3a  Code  Gb  Flash.o [1]
 NVIC_EnableIRQ                0x499    0xe  Code  Lc  UART0.o [1]
-Program_LongWord_8B           0x81d   0x52  Code  Gb  Flash.o [1]
+Program_LongWord_8B           0x859   0x52  Code  Gb  Flash.o [1]
 QUEUE_Peek                    0x42f   0x10  Code  Gb  Queue.o [1]
 QUEUE_Pop                     0x469   0x1a  Code  Gb  Queue.o [1]
 QUEUE_Push                    0x44f   0x1a  Code  Gb  Queue.o [1]
 QUEUE_checkEmpty              0x411   0x1e  Code  Gb  Queue.o [1]
 QUEUE_getFreeElement          0x43f   0x10  Code  Gb  Queue.o [1]
-Region$$Table$$Base           0xa1c          --   Gb  - Linker created -
-Region$$Table$$Limit          0xa2c          --   Gb  - Linker created -
+Region$$Table$$Base           0xa58          --   Gb  - Linker created -
+Region$$Table$$Limit          0xa68          --   Gb  - Linker created -
 SREC_ConvertChar2Hex           0xcd   0x16  Code  Lc  Srec_parse.o [1]
 SREC_Init                      0xc1    0xc  Code  Gb  Srec_parse.o [1]
 SREC_callBack                 0x24f   0x2e  Code  Gb  Srec_parse.o [1]
 SREC_callBack::dataIndex
                         0x1fff'e823    0x1  Data  Lc  Srec_parse.o [1]
 SREC_lineParse                 0xe3  0x16c  Code  Gb  Srec_parse.o [1]
-SystemInit                    0xab5    0x8  Code  Gb  system_MKL46Z4.o [1]
+SystemInit                    0xaf1    0x8  Code  Gb  system_MKL46Z4.o [1]
 UART0_Calculated_baud         0x4a7   0x78  Code  Lc  UART0.o [1]
 UART0_IRQHandler              0x5fd   0x10  Code  Gb  UART0.o [1]
 UART0_Init                    0x51f   0xb8  Code  Gb  UART0.o [1]
@@ -258,19 +260,19 @@ __Vectors_Size {Abs}           0xc0          --   Gb  startup_MKL46Z4.o [1]
 __aeabi_idiv0                 0x705         Code  Gb  IntDivZer.o [3]
 __aeabi_uidiv                 0x655         Code  Gb  I32DivModFast.o [3]
 __aeabi_uidivmod              0x655         Code  Gb  I32DivModFast.o [3]
-__cmain                       0xa2d         Code  Gb  cmain.o [3]
-__exit                        0xa6d   0x14  Code  Gb  exit.o [4]
-__iar_data_init3              0x9ad   0x28  Code  Gb  data_init.o [3]
-__iar_program_start           0xa81         Code  Gb  cstartup_M.o [3]
-__iar_zero_init3              0x949   0x3c  Code  Gb  zero_init3.o [3]
-__low_level_init              0xa4b    0x4  Code  Gb  low_level_init.o [2]
+__cmain                       0xa69         Code  Gb  cmain.o [3]
+__exit                        0xaa9   0x14  Code  Gb  exit.o [4]
+__iar_data_init3              0x9e9   0x28  Code  Gb  data_init.o [3]
+__iar_program_start           0xabd         Code  Gb  cstartup_M.o [3]
+__iar_zero_init3              0x985   0x3c  Code  Gb  zero_init3.o [3]
+__low_level_init              0xa87    0x4  Code  Gb  low_level_init.o [2]
 __vector_table                  0x0         Data  Gb  startup_MKL46Z4.o [1]
 __vector_table_0x1c            0x1c         Data  Gb  startup_MKL46Z4.o [1]
-_call_main                    0xa39         Code  Gb  cmain.o [3]
-_exit                         0xa61         Code  Gb  cexit.o [3]
-_main                         0xa43         Code  Gb  cmain.o [3]
-exit                          0xa59    0x8  Code  Gb  exit.o [2]
-main                          0xa4f    0xa  Code  Gb  main.o [1]
+_call_main                    0xa75         Code  Gb  cmain.o [3]
+_exit                         0xa9d         Code  Gb  cexit.o [3]
+_main                         0xa7f         Code  Gb  cmain.o [3]
+exit                          0xa95    0x8  Code  Gb  exit.o [2]
+main                          0xa8b    0xa  Code  Gb  main.o [1]
 ptr_put                 0x1fff'e818    0x4  Data  Gb  Srec_parse.o [1]
 s_callBack              0x1fff'e81c    0x4  Data  Lc  UART0.o [1]
 s_queue                 0x1fff'e000  0x818  Data  Lc  Queue.o [1]
@@ -284,7 +286,7 @@ s_queue_pushIndex       0x1fff'e820    0x1  Data  Lc  Queue.o [1]
 [3] = rt6M_tl.a
 [4] = shb_l.a
 
-  2'356 bytes of readonly  code memory
+  2'416 bytes of readonly  code memory
     132 bytes of readonly  data memory
   4'132 bytes of readwrite data memory
 
