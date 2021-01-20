@@ -14,15 +14,10 @@
 #include "Button.h"
 
 /* Define function pointer Reset */
-typedef void(*RESET) (void);
+typedef void(*switchToApp) (void);
 
 /* Define macro for App.h */
-#define BAUD_RATE       115200ul
-#define USER_APP_START_ADDRESS      (0xA000u)
-#define USER_APP_STOP_ADDRESS       (0x3FFFFu)
-#define NUMBER_BYTE_IN_SECTOR       1024u
-#define NUMBER_SECTOR_IN_FLASH      ((USER_APP_STOP_ADDRESS - USER_APP_START_ADDRESS)/ NUMBER_BYTE_IN_SECTOR)
-#define COMPLETE_PARSE              0u
+
 
 /* Prototype function */
 void App_Boot(void);

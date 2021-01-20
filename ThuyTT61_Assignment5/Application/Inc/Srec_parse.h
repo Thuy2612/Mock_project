@@ -26,13 +26,13 @@ typedef struct
 /* Define type parseStatus_t*/
 typedef enum parstStatus_t
 {
-    parseStatus_Start,
-    parseStatus_Inprogress,
-    parseStatus_InvalidSrecType,
-    parseStatus_Optional,
-    parseStatus_Done,
-    parseStatus_InvalidChecksum,
-    parseStatus_Error
+    parseStatus_Start = 0x00 ,
+    parseStatus_Inprogress = 0x01,
+    parseStatus_InvalidSrecType =0x02,
+    parseStatus_Optional =0x03,
+    parseStatus_Done =0x04,
+    parseStatus_InvalidChecksum =0x05,
+    parseStatus_Error =0x06
 }parseStatus_t;
 
 /* Prototype Function */

@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.50.9.278/W32 for ARM                  21/Jan/2021  00:56:40
+# IAR ELF Linker V8.50.9.278/W32 for ARM                  21/Jan/2021  01:18:31
 # Copyright 2007-2020 IAR Systems AB.
 #
 #    Output file  =
@@ -8,7 +8,7 @@
 #    Map file     =
 #        C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\List\Assignment_5.map
 #    Command line =
-#        -f C:\Users\Admin\AppData\Local\Temp\EW696C.tmp
+#        -f C:\Users\Admin\AppData\Local\Temp\EW681A.tmp
 #        (C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\Obj\App.o
 #        C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\Obj\Button.o
 #        C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\Debug\Obj\Flash.o
@@ -88,8 +88,8 @@ No sections matched the following patterns:
   .text            ro code        0x704    0x2  IntDivZer.o [3]
   .text            ro code        0x706    0x2  startup_MKL46Z4.o [1]
   .text            ro code        0x708  0x114  App.o [1]
-  .text            ro code        0x81c   0x4c  Button.o [1]
-  .text            ro code        0x868   0xe0  Flash.o [1]
+  .text            ro code        0x81c   0xe0  Flash.o [1]
+  .text            ro code        0x8fc   0x4c  Button.o [1]
   .text            ro code        0x948   0x3c  zero_init3.o [3]
   .rodata          const          0x984   0x28  App.o [1]
   .text            ro code        0x9ac   0x28  data_init.o [3]
@@ -223,14 +223,16 @@ Entry                       Address   Size  Type      Object
 .iar.init_table$$Base         0xa1c          --   Gb  - Linker created -
 .iar.init_table$$Limit        0xa2c          --   Gb  - Linker created -
 ?main                         0xa2d         Code  Gb  cmain.o [3]
-App_Boot                      0x709  0x114  Code  Gb  App.o [1]
-BUTTON_Init                   0x81d   0x4c  Code  Gb  Button.o [1]
+APP_jumpToAPP                 0x7a3   0x1c  Code  Gb  App.o [1]
+APP_loadFirmware              0x709   0x9a  Code  Gb  App.o [1]
+App_Boot                      0x7bf   0x34  Code  Gb  App.o [1]
+BUTTON_Init                   0x8fd   0x4c  Code  Gb  Button.o [1]
 CSTACK$$Base            0x1fff'e828          --   Gb  - Linker created -
 CSTACK$$Limit           0x1fff'f028          --   Gb  - Linker created -
-Erase_Multi_Sector            0x91d   0x2c  Code  Gb  Flash.o [1]
-Erase_Sector                  0x8bb   0x3a  Code  Gb  Flash.o [1]
+Erase_Multi_Sector            0x8d1   0x2c  Code  Gb  Flash.o [1]
+Erase_Sector                  0x86f   0x3a  Code  Gb  Flash.o [1]
 NVIC_EnableIRQ                0x499    0xe  Code  Lc  UART0.o [1]
-Program_LongWord_8B           0x869   0x52  Code  Gb  Flash.o [1]
+Program_LongWord_8B           0x81d   0x52  Code  Gb  Flash.o [1]
 QUEUE_Peek                    0x42f   0x10  Code  Gb  Queue.o [1]
 QUEUE_Pop                     0x469   0x1a  Code  Gb  Queue.o [1]
 QUEUE_Push                    0x44f   0x1a  Code  Gb  Queue.o [1]
