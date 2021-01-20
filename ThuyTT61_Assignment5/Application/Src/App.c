@@ -7,6 +7,7 @@
 
 #include "App.h"
 
+/* Define macro for App.h */
 #define BAUD_RATE                   115200ul
 #define USER_APP_START_ADDRESS      (0xA000u)
 #define USER_APP_STOP_ADDRESS       (0x3FFFFu)
@@ -18,10 +19,8 @@
 
 /*FUNCTION**********************************************************************
  *
- * Function Name : App_Boot
- * Description   : Not value return, Loading APP program.
- *                 If button is pressed -> load APP program
- *                 if button isn't pressed -> run APP program
+ * Function Name : APP_checkInvalidApp
+ * Description   : Not value return, check Flash don't have data 
  *
  *END**************************************************************************/
 
@@ -35,12 +34,28 @@ bool APP_checkInvalidApp(void)
     }
     return checkInvalid;
 }
+
+/*FUNCTION**********************************************************************
+ *
+ * Function Name : APP_EraseFlash
+ * Description   : Not value return, Erase all sector in Flash
+ *
+ *END**************************************************************************/
+
 void APP_EraseFlash(void)
 {
     __disable_irq(); /* Disable all interrupt and pending */
     Erase_Multi_Sector(USER_APP_START_ADDRESS, NUMBER_SECTOR_IN_FLASH); /* Erase all flash */
     __enable_irq(); /* Enable  interrupt and pending again */
 }
+
+/*FUNCTION**********************************************************************
+ *
+ * Function Name : APP_loadFirmware
+ * Description   : Not value return, load app program into flash
+ *
+ *END**************************************************************************/
+
 void APP_loadFirmware(void)
 {
     /* Variable local */
@@ -50,8 +65,6 @@ void APP_loadFirmware(void)
     parseData_Struct_t outPutData;
 
     APP_EraseFlash();
-
-    UART0_Tx_Msg("Choose 'Send File' to start program!\r\n");
 
     while(true)
     {
@@ -66,12 +79,12 @@ void APP_loadFirmware(void)
             switch(lineParse)
             {
                 case parseStatus_Start:
-                    UART0_Tx_Msg("Finish\r\n");
+                    UART0_Tx_Msg("\nStart parse\r\n");
                     break;
 
                 case parseStatus_Done:
-                    UART0_Tx_Msg("DONE\r\n");
-                    UART0_Tx_Msg( "Press Reset button to run program\r\n" );
+                    UART0_Tx_Msg("\nComplete parse\r\n");
+                    UART0_Tx_Msg( "\nPress Reset button to run APP\r\n" );
                     //completeParse = COMPLETE_PARSE; /* complete parse processing */
                     break;
 
@@ -80,8 +93,8 @@ void APP_loadFirmware(void)
                     UART0_Tx_Msg("Error\r\n"); /* SREC file have error */
                     break;
 
-                default:
-                    UART0_Tx_Msg( "LOADING\r\n ");
+                case parseStatus_Inprogress:
+                    UART0_Tx_Msg( "...\r\n ");
 
                     for( index = 0; index < outPutData.length ; index += 4)
                     {
@@ -94,12 +107,20 @@ void APP_loadFirmware(void)
                     }
 
                     break;
+
+                default:
+                    break;
             }
         }
     }
 }
 
-
+/*FUNCTION**********************************************************************
+ *
+ * Function Name : APP_jumpToAPP
+ * Description   : Not value return, jump to Reset function of APP and run APP program
+ *
+ *END**************************************************************************/
 
 void APP_jumpToAPP(void)
 {
@@ -111,6 +132,15 @@ void APP_jumpToAPP(void)
     SCB -> VTOR = (uint32_t)(0xA000); /* Load the vector table address of the user application*/
     switchAPP(); /* Call back RESET function */
 }
+
+/*FUNCTION**********************************************************************
+ *
+ * Function Name : App_Boot
+ * Description   : Not value return, Loading APP program.
+ *                 If button is pressed -> load APP program
+ *                 if button isn't pressed -> run APP program
+ *
+ *END**************************************************************************/
 void App_Boot(void)
 {
 
@@ -140,7 +170,6 @@ void App_Boot(void)
         APP_jumpToAPP();
     }
 }
-
 /* **********************************************************************
  * EOF
  ***********************************************************************/

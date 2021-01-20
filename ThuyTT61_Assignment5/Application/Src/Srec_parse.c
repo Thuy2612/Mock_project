@@ -11,12 +11,24 @@ uint8_t *ptr_put = NULL;
 
 static uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar);
 
+
+/*FUNCTION**********************************************************************
+ *
+ * Function Name : SREC_Init
+ * Description   : No value return, get address start of queue
+ *END**************************************************************************/
+
 void SREC_Init(void)
 {
     ptr_put = QUEUE_getFreeElement();
 }
 
-/*chuyen ki tu thanh so hexa*/
+/*FUNCTION**********************************************************************
+ *
+ * Function Name : SREC_ConvertChar2Hex
+ * Description   : Return uint8_t, convert from character to hex
+ *END**************************************************************************/
+
 static uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar)
 {
   if((Hexchar>='A')&&(Hexchar<='F'))
@@ -24,6 +36,12 @@ static uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar)
   else Hexchar =Hexchar-48;
   return Hexchar;
 }
+
+/*FUNCTION**********************************************************************
+ *
+ * Function Name : SREC_lineParse
+ * Description   : Return parseStatus_t, get status of parse process
+ *END**************************************************************************/
 
 parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData)
 {
@@ -109,6 +127,12 @@ parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData)
     return status;
 }
 
+
+/*FUNCTION**********************************************************************
+ *
+ * Function Name : SREC_lineParse
+ * Description   : No value return, call bcak funtion to push data into QUEUE
+ *END**************************************************************************/
 
 void SREC_callBack(uint8_t character)
 {

@@ -16,10 +16,11 @@
 /* Define function pointer Reset */
 typedef void(*switchToApp) (void);
 
-/* Define macro for App.h */
-
-
 /* Prototype function */
+void APP_jumpToAPP(void);
+void APP_loadFirmware(void);
+void APP_EraseFlash(void);
+bool APP_checkInvalidApp(void);
 void App_Boot(void);
 
 #endif /* INCLUDES_APP_H_ */
