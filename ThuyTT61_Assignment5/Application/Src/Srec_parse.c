@@ -13,7 +13,6 @@ static uint8_t SREC_ConvertChar2Hex(unsigned char Hexchar);
 
 void SREC_Init(void)
 {
-    QUEUE_Init();
     ptr_put = QUEUE_getFreeElement();
 }
 
@@ -109,11 +108,7 @@ parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData)
 
     return status;
 }
-void SREC_Init(void)
-{
-    QUEUE_Init();
-    ptr_put = QUEUE_getFreeElement();
-}
+
 
 void SREC_callBack(uint8_t character)
 {

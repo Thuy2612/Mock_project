@@ -38,6 +38,7 @@ typedef enum parstStatus_t
 /* Prototype Function */
 void SREC_Init(void);
 void SREC_callBack(uint8_t character);
+parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData);
 
 #endif /* INCLUDES_SREC_PARSE_H_ */
 

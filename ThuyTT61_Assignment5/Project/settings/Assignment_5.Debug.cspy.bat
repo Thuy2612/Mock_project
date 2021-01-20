@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.general.xcl" --backend -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.general.xcl" --backend -f "C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Admin\Desktop\Mock\ThuyTT61_Assignment5\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.4\common\bin\cspybat" -f "C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.general.xcl" "--debug_file=%~1" --backend -f "C:\Users\Admin\Desktop\Mock1\Mock_project\ThuyTT61_Assignment5\Project\settings\Assignment_5.Debug.driver.xcl" 
 
 @echo off 
 :end

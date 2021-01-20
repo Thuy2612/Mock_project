@@ -31,7 +31,7 @@ void App_Boot(void)
     SREC_Init();
     BUTTON_Init();
 
-    UART0_Tx_Msg("Press SW1 to load APP program to Flash\r\n");
+ //   UART0_Tx_Msg("Press SW1 to load APP program to Flash\r\n");
 
     if(!NOT_PRESS_BUTTON)
     { /* Button is pressed, load APP program in to FLASH */
@@ -46,7 +46,7 @@ void App_Boot(void)
 
         while( !completeParse)
             {
-                if( QUEUE_checkEmpty() == QUEUE_NOT_EMPTY)
+                if( !QUEUE_checkEmpty())
                 {
                     srecLine = QUEUE_Peek(); /* peek line srec to handl */
 

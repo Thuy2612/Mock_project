@@ -9,33 +9,22 @@
 
 /* Variable static globle */
 static uint8_t s_queue[NUMBER_LINE_IN_QUEUE_MAX][NUMBER_CHAR_IN_LINE_MAX];
-static uint8_t s_line_pushIndex;
-static uint8_t s_line_popIndex;
+static uint8_t s_queue_pushIndex = START_INDEX_LINE_IN_QUEUE;
+static uint8_t s_queue_popIndex = START_INDEX_LINE_IN_QUEUE;
+static uint8_t s_queue_level =0;
 
-/*FUNCTION**********************************************************************
- *
- * Function Name : QUEUE_Init
- * Description   : Not value return
- *END**************************************************************************/
-
-void QUEUE_Init(void)
-{
-    s_line_pushIndex = START_INDEX_LINE_IN_QUEUE;
-    s_line_popIndex = START_INDEX_LINE_IN_QUEUE;
-
-}
 /*FUNCTION**********************************************************************
  *
  * Function Name : QUEUE_checkEmpty
  * Description   : Return TRUE if queue empty, return false if not empty
  *END**************************************************************************/
 
-uint8_t QUEUE_checkEmpty(void)
+bool QUEUE_checkEmpty(void)
 {
-    uint8_t checkEmpty = QUEUE_NOT_EMPTY;
-    if(s_line_popIndex == s_line_pushIndex)
+    uint8_t checkEmpty = false;
+    if( s_queue_level == 0)
     {
-        checkEmpty = QUEUE_EMPTY;
+        checkEmpty = true;
     }
     return checkEmpty;
 }
@@ -46,12 +35,12 @@ uint8_t QUEUE_checkEmpty(void)
  * Description   : Return TRUE if queue full, return false if not full
  *END**************************************************************************/
 
-uint8_t QUEUE_checkFull(void)
+bool QUEUE_checkFull(void)
 {
-    uint8_t checkFull = QUEUE_NOT_FULL;
-    if( ((s_line_popIndex == 0) && (s_line_pushIndex == 4)) ||( (s_line_pushIndex - s_line_popIndex) == 1 ))
+    uint8_t checkFull = false;
+    if( s_queue_level == NUMBER_LINE_IN_QUEUE_MAX)
     {
-        checkFull = QUEUE_FULL;
+        checkFull = true;
     }
 
     return checkFull;
@@ -67,7 +56,7 @@ uint8_t* QUEUE_Peek(void)
 {
     uint8_t* ptr_peekAddress = NULL;
 
-        ptr_peekAddress = s_queue[s_line_popIndex];
+    ptr_peekAddress = s_queue[s_queue_popIndex];
 
     return ( ptr_peekAddress );
 }
@@ -81,7 +70,8 @@ uint8_t* QUEUE_Peek(void)
 uint8_t* QUEUE_getFreeElement(void)
 {
     uint8_t* ptr_freeSpace = NULL;
-        ptr_freeSpace = s_queue[s_line_pushIndex];
+
+    ptr_freeSpace = s_queue[s_queue_pushIndex];
 
     return ptr_freeSpace;
 }
@@ -94,8 +84,9 @@ uint8_t* QUEUE_getFreeElement(void)
 
 void QUEUE_Push(void)
 {
-    s_line_pushIndex++;
-    s_line_pushIndex = s_line_pushIndex % NUMBER_LINE_IN_QUEUE_MAX;
+    s_queue_pushIndex++;
+    s_queue_level ++;
+    s_queue_pushIndex = s_queue_pushIndex % NUMBER_LINE_IN_QUEUE_MAX;
 }
 
 /*FUNCTION**********************************************************************
@@ -106,8 +97,9 @@ void QUEUE_Push(void)
 
 void QUEUE_Pop(void)
 {
-    s_line_popIndex++;
-    s_line_popIndex = s_line_popIndex % NUMBER_LINE_IN_QUEUE_MAX;
+    s_queue_popIndex++;
+    s_queue_level--;
+    s_queue_popIndex = s_queue_popIndex % NUMBER_LINE_IN_QUEUE_MAX;
 }
 
 /* **********************************************************************
