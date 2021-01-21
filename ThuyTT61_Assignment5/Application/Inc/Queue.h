@@ -12,13 +12,6 @@
 #include "stdio.h"
 #include "stdbool.h"
 
-/* Define Macro for Queue.h */
-#define NUMBER_LINE_IN_QUEUE_MAX            4u
-#define START_INDEX_LINE_IN_QUEUE           0u
-#define NUMBER_CHAR_IN_LINE_MAX             518u
-#define START_INDEX_CHAR_IN_LINE            0u
-
-
 /* Prototype function */
 void QUEUE_Init(void);
 bool QUEUE_checkEmpty(void);

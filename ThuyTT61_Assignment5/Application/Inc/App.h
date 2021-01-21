@@ -13,14 +13,16 @@
 #include "Flash.h"
 #include "Button.h"
 
+#define BAUD_RATE                   115200ul
+
 /* Define function pointer Reset */
 typedef void(*switchToApp) (void);
 
 /* Prototype function */
+void APP_delay(uint32_t timeDelay);
+bool APP_checkInvalidApp(void);
 void APP_jumpToAPP(void);
 void APP_loadFirmware(void);
-void APP_EraseFlash(void);
-bool APP_checkInvalidApp(void);
 void App_Boot(void);
 
 #endif /* INCLUDES_APP_H_ */

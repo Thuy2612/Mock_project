@@ -27,6 +27,9 @@ static void UART0_Calculated_baud(uint32_t baudRate)
     uint8_t osr_choice;
     uint8_t sbr_choice =0;
     int32_t sub;
+    int32_t subPresent;
+    int32_t subAfter ;
+
     uint32_t baud_cal = baudRate;
     uint32_t min = baudRate;
 
@@ -55,11 +58,16 @@ static void UART0_Calculated_baud(uint32_t baudRate)
             sbr_choice = sbr;
         }
     }
-
-    UART0 -> C4 = osr_choice;     /* OSR = 6 */
+    subPresent =(DEFAULT_SYSTEM_CLOCK)/(sbr_choice*(osr_choice+1)) - baudRate;
+    subAfter = baudRate - (DEFAULT_SYSTEM_CLOCK)/((sbr_choice +1)*(osr_choice+1));
+    if( subPresent >  subAfter )
+    {
+        sbr_choice = sbr_choice + 1;
+    }
+    UART0 -> C4 = osr_choice;
     UART0 -> BDH &= ~UART0_BDH_SBR_MASK;
     UART0 -> BDH |= (sbr_choice >> 8) & UART0_BDH_SBR_MASK;
-    UART0 -> BDL = ( sbr_choice & UART0_BDL_SBR_MASK);    /* SBR = 26 */
+    UART0 -> BDL = ( sbr_choice & UART0_BDL_SBR_MASK);
 }
 
 /*FUNCTION**********************************************************************

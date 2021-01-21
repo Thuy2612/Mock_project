@@ -7,6 +7,14 @@
 
 #include "Queue.h"
 
+
+/* Define Macro for Queue.h */
+#define NUMBER_LINE_IN_QUEUE_MAX            4u
+#define START_INDEX_LINE_IN_QUEUE           0u
+#define NUMBER_CHAR_IN_LINE_MAX             518u
+#define START_INDEX_CHAR_IN_LINE            0u
+
+
 /* Variable static globle */
 static uint8_t s_queue[NUMBER_LINE_IN_QUEUE_MAX][NUMBER_CHAR_IN_LINE_MAX];
 static uint8_t s_queue_pushIndex = START_INDEX_LINE_IN_QUEUE;
@@ -56,7 +64,10 @@ uint8_t* QUEUE_Peek(void)
 {
     uint8_t* ptr_peekAddress = NULL;
 
-    ptr_peekAddress = s_queue[s_queue_popIndex];
+    if( !QUEUE_checkEmpty())
+    {
+        ptr_peekAddress = s_queue[s_queue_popIndex];
+    }
 
     return ( ptr_peekAddress );
 }
@@ -71,7 +82,10 @@ uint8_t* QUEUE_getFreeElement(void)
 {
     uint8_t* ptr_freeSpace = NULL;
 
-    ptr_freeSpace = s_queue[s_queue_pushIndex];
+    if( !QUEUE_checkFull() )
+    {
+        ptr_freeSpace = s_queue[s_queue_pushIndex];
+    }
 
     return ptr_freeSpace;
 }
@@ -84,9 +98,13 @@ uint8_t* QUEUE_getFreeElement(void)
 
 void QUEUE_Push(void)
 {
-    s_queue_pushIndex++;
-    s_queue_level ++;
-    s_queue_pushIndex = s_queue_pushIndex % NUMBER_LINE_IN_QUEUE_MAX;
+    if( !QUEUE_checkFull() )
+    {
+        s_queue_pushIndex++;
+        s_queue_level ++;
+        s_queue_pushIndex = s_queue_pushIndex % NUMBER_LINE_IN_QUEUE_MAX;
+    }
+
 }
 
 /*FUNCTION**********************************************************************
@@ -97,9 +115,13 @@ void QUEUE_Push(void)
 
 void QUEUE_Pop(void)
 {
-    s_queue_popIndex++;
-    s_queue_level--;
-    s_queue_popIndex = s_queue_popIndex % NUMBER_LINE_IN_QUEUE_MAX;
+    if( !QUEUE_checkEmpty() )
+    {
+        s_queue_popIndex++;
+        s_queue_level--;
+        s_queue_popIndex = s_queue_popIndex % NUMBER_LINE_IN_QUEUE_MAX;
+    }
+
 }
 
 /* **********************************************************************

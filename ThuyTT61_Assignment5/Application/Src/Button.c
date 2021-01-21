@@ -2,7 +2,7 @@
  * Button.c
  *
  *  Created on: Jan 19, 2021
- *      Author: Admin
+ *      Author: ThuyTT61
  */
 #include "Button.h"
 

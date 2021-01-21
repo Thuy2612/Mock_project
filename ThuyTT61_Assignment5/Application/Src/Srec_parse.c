@@ -137,19 +137,23 @@ parseStatus_t SREC_lineParse(uint8_t *srecLine, parseData_Struct_t *outPutData)
 void SREC_callBack(uint8_t character)
 {
     static uint8_t dataIndex = 0;
-
-    ptr_put[dataIndex] = character;
-
-    if( ptr_put[dataIndex] == '\n')
+    if(ptr_put !=NULL)
     {
-        dataIndex = 0;
-        QUEUE_Push();
-        ptr_put = QUEUE_getFreeElement();
+        ptr_put[dataIndex] = character;
+
+        if( ptr_put[dataIndex] == '\n')
+        {
+            dataIndex = 0;
+            QUEUE_Push();
+            ptr_put = QUEUE_getFreeElement();
+        }
+        
+        else
+        {
+            dataIndex ++;
+        }
     }
-    else
-    {
-        dataIndex ++;
-    }
+
 }
 /* **********************************************************************
  * EOF
